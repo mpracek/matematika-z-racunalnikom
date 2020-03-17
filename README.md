@@ -10,5 +10,7 @@ Obiskovalec bo lahko začel igro življenja, ne bo pa je mogel igrati, saj je to
 
 ### Potrebne knjižnjice
 * shiny
+* queueing
+* ggplot2
 * bodo dodane sproti
 
