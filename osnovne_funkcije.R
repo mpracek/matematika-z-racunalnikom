@@ -41,11 +41,49 @@ smrti <- function(stevilka_porazdelitve,st_korakov){
 
 
 #cumsum za delne vsote
-stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){}
-  smrt <- smrti(st_smrti,st_korakov)
-  rojstvo <- rojstva(st_rojstvo,st_korakov)
-  cumsum(smrt), cumsum(rojstvo)
-  
-    
+#zanima nas le gibanje do stevila korakov, ker bomo tako dobili resnično gibanje
+#ko dobimo 0 je populacija izumrla
+stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
+  vektor_gibanja <- rep(0,100)
+  vektor_gibanja[1] <- zacetno
+  smrt <- cumsum(smrti(st_smrt,st_korakov))
+  rojstvo <- cumsum(rojstva(st_rojstvo,st_korakov))
+  zadnje_rojstvo <- 1
+  zadnja_smrt <- 1
+  st_osebkov <- zacetno
+  for(i in 2:st_korakov){
+    if(smrt[zadnja_smrt]<rojstvo[zadnje_rojstvo]){
+      vektor_gibanja[i] <- vektor_gibanja[i-1] - 1
+      zadnja_smrt <- zadnja_smrt + 1}
+    else{
+      vektor_gibanja[i] <- vektor_gibanja[i-1] + 1
+      zadnje_rojstvo <- zadnje_rojstvo + 1}
+    }
+  return(vektor_gibanja)
+} 
+ 
+#ta funkcija nam da delitev, ko imamo izumrtje 
+#dobimo tudi čas izumrtja
+izumrtje <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
+  koncni_indeks <- min(st_korakov,
+                       min(which(stevilo(zacetno,st_korakov,st_rojstvo,st_smrt) == 0)))
+  koncni_cas <- cumsum(smrti(st_smrt,st_korakov))[koncni_indeks]
+  povratek <- list("korak_konca" = koncni_indeks, "cas_konca" = koncni_cas )
+  return(povratek)
+}    
 
-#ugotovi kako naredit stacionarnost
+#porazdelitev izumrtja
+#generiramo veliko število procesov
+
+generacija <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
+  n <- 10000
+  casi <- rep(0,n)
+  indeksi <- rep(0,n)
+  for(i in 1:n){
+    casi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$cas_konca
+    indeksi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$korak_konca
+  }
+  hist(casi)
+  hist(indeksi)
+  casi
+}
