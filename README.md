@@ -9,6 +9,6 @@ V okviru tega bom predstavil tudi igro življenja ter koalicijske igre.
 Podrobneje bom pogledal tudi celične procese pri enoceličnih organizmih.
 
 ### Potrebne knjižnjice
-..* shiny
-..* bodo dodane sproti
+* shiny
+* bodo dodane sproti
 
