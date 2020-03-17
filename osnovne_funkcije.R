@@ -19,16 +19,16 @@
 #najprej generiramo vektor
 porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm,rbeta,rbinom,dgamma,dgeom,dhyper)
 
-rojstva <- function(stevilka_porazdelitve,st_korakov,
-                    parameter1 = NULL, parameter2 = NULL, parameter3 = NULL){
-  rezultat <- abs(porazdelitve[stevilka_porazdelitve](st_korakov,parameter1,parameter2,parameter3))
+
+#uredi, da bo lahko več parametrov
+rojstva <- function(stevilka_porazdelitve,st_korakov){
+  rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }
 
 #enako kot za rojstva
-smrti <- function(stevilka_porazdelitve,st_korakov,
-                  parameter1 = NULL, parameter2 = NULL, parameter3 = NULL){
-  rezultat <- abs(porazdelitve[stevilka_porazdelitve](st_korakov,parameter1,parameter2,parameter3))
+smrti <- function(stevilka_porazdelitve,st_korakov){
+  rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }
 
@@ -39,12 +39,13 @@ smrti <- function(stevilka_porazdelitve,st_korakov,
 #gledamo delne vsote casov; ce je vsota casov rojstev do cetrtega manjsa od casa prve smrti,
 #bomo torej imeli zacetno stanje + 4, nato se -1 (po smrti)
 
-stevilo <- function(zacetno,rojstva,smrti){
-  if(smrti<rojstva){
-    zacetno <- zacetno - 1}
-  else{
-    zacetno <- zacetno + 1}
-}
 
+#cumsum za delne vsote
+stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){}
+  smrt <- smrti(st_smrti,st_korakov)
+  rojstvo <- rojstva(st_rojstvo,st_korakov)
+  cumsum(smrt), cumsum(rojstvo)
+  
+    
 
 #ugotovi kako naredit stacionarnost
