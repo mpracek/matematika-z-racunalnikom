@@ -9,6 +9,9 @@ V okviru tega bom predstavil tudi [igro življenja](https://en.wikipedia.org/wik
 Obiskovalec bo lahko začel igro življenja, ne bo pa je mogel igrati, saj je to igra nič igralcev.
 
 ### Potrebne knjižnjice
+Manj znane knjižnjice bodo povezane z CRAN stranjo
 * shiny
+* [queueing](https://cran.r-project.org/web/packages/queueing/index.html)
+* ggplot2
 * bodo dodane sproti
 
