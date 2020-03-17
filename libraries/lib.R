@@ -3,7 +3,7 @@
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
-library(shinyBS)
+#library(shinyBS)
 library(knitr)
 library(dplyr)
 library(dbplyr)
