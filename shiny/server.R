@@ -2,6 +2,8 @@
 
 #zazenemo potrebne datoteke
 source("../libraries/lib.r")
+source("../osnovne_funkcije.r")
+source("../igra_zivljenja.r")
 
 
 #samo primer

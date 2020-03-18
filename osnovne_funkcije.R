@@ -65,8 +65,13 @@ stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
 #ta funkcija nam da delitev, ko imamo izumrtje 
 #dobimo tudi čas izumrtja
 izumrtje <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
-  koncni_indeks <- min(st_korakov,
-                       min(which(stevilo(zacetno,st_korakov,st_rojstvo,st_smrt) == 0)))
+  if(0 %in% stevilo(zacetno,st_korakov,st_rojstvo,st_smrt) == TRUE){
+    koncni_indeks <- which(stevilo(zacetno,st_korakov,st_rojstvo,st_smrt) == 0)[1]}
+  else{
+    koncni_indeks <- st_korakov}
+  if(is.na(koncni_indeks) == TRUE){
+    koncni_indeks <- st_korakov
+  }
   koncni_cas <- cumsum(smrti(st_smrt,st_korakov))[koncni_indeks]
   povratek <- list("korak_konca" = koncni_indeks, "cas_konca" = koncni_cas )
   return(povratek)
@@ -83,7 +88,7 @@ generacija <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
     casi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$cas_konca
     indeksi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$korak_konca
   }
-  hist(casi)
-  hist(indeksi)
+  hist(casi, breaks = 1000)
+  hist(indeksi, breaks = 100)
   casi
 }
