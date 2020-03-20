@@ -17,7 +17,7 @@
 #gledamo delne vsote 
 
 #najprej generiramo vektor
-porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm,rbeta,rbinom,dgamma,dgeom,dhyper)
+porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm) #,rbeta,rbinom,dgamma,dgeom,dhyper)
 
 
 #uredi, da bo lahko več parametrov
