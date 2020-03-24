@@ -19,6 +19,9 @@
 #najprej generiramo vektor
 porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm) #,rbeta,rbinom,dgamma,dgeom,dhyper)
 
+#problem je, ker imamo zaenkrat lahko le fukncije z enim parametrom
+#to moram urediti
+
 
 #uredi, da bo lahko več parametrov
 rojstva <- function(stevilka_porazdelitve,st_korakov){
@@ -81,6 +84,10 @@ izumrtje <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
 #generiramo veliko število procesov
 
 generacija <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
+  #st_korakov naj ne bo preveč veliko, saj je precej pocasno
+  #po 100 korakih se zna zgoditi, da imamo debel rep
+  #1000 korakov zelo počasno
+  #500 korakov?
   n <- 10000
   casi <- rep(0,n)
   indeksi <- rep(0,n)
@@ -88,7 +95,11 @@ generacija <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
     casi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$cas_konca
     indeksi[i] <- izumrtje(zacetno,st_korakov,st_rojstvo,st_smrt)$korak_konca
   }
-  hist(casi, breaks = 1000)
-  hist(indeksi, breaks = 100)
-  casi
+  hist(casi, breaks = 1000,main = "Časi zaključka procesa do 50",
+       xlab = "Čas",ylab = "Frekvenca", xlim = range(1:50))
+  hist(casi, breaks = 1000,main = "Časi zaključka procesa",
+       xlab = "Čas",ylab = "Frekvenca")
+  hist(indeksi, breaks = 1000,main = "Število korakov do zaključka",
+       xlab = "Koraki",ylab = "Frekvenca")
+  
 }

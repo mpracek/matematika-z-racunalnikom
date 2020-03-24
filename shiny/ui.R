@@ -4,20 +4,22 @@
 source("../libraries/lib.r")
 source("../osnovne_funkcije.r")
 source("../igra_zivljenja.r")
+source("../cakalne_vrste.r")
 
 
 sidebar <- dashboardSidebar(hr(),
                             sidebarMenu(id="osnova",
                                         menuItem("Osnove matematike", tabName = "osnove", selected = TRUE)),
                             sidebarMenu(id="igra",
-                                        menuItem("Igra življenja",tabName = "igre"))
-)
+                                        menuItem("Igra življenja",tabName = "igre"),
+                            sidebarMenu(id="vrsta",
+                                        menuItem("Čakalne vrste",tabName = "vrste"))
+))
 
 
 body <- dashboardBody(
   tabItems(
-    tabItem(tabName = "osnove"),
-    tabItem(tabName = "igre",
+    tabItem(tabName = "osnove",
             fluidRow(sidebarPanel(
               sliderInput("min_max",
                           "Velikost zacetne populacije:",
@@ -28,7 +30,15 @@ body <- dashboardBody(
                           post = "",
                           sep = ".")),
             mainPanel()
-            ))))
+            #sem gre koda iz osnovnih_funkcij
+            )),
+    tabItem(tabName = "igre"
+            #sem gre koda iz igre_zivljenja
+            ),
+    tabItem(tabName= "vrste"
+            #sem gre koda iz cakalne_vrste
+            )
+))
 
   
 fluidPage(useShinyjs(),

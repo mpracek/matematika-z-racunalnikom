@@ -4,7 +4,7 @@
 source("../libraries/lib.r")
 source("../osnovne_funkcije.r")
 source("../igra_zivljenja.r")
-
+source("../cakalne_vrste.r")
 
 #samo primer
 server <- function(input, output) {
