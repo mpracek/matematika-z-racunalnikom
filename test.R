@@ -16,3 +16,4 @@ plot(stevilo(50,100,3,1),
      ylab = "Velikost populacije",
      main = "Velikost populacije skozi čas",
      type = "s")
+

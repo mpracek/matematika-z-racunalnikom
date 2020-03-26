@@ -61,6 +61,9 @@ stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
     else{
       vektor_gibanja[i] <- vektor_gibanja[i-1] + 1
       zadnje_rojstvo <- zadnje_rojstvo + 1}
+    if(vektor_gibanja[i] == 0){
+      return(vektor_gibanja)
+    }
     }
   return(vektor_gibanja)
 } 

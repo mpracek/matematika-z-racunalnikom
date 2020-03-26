@@ -108,7 +108,7 @@ za_matriko <- function(matrika){
 celotna_igra <- function(st_korakov, zacetna_matrika){
   #st_korakov pove koliko korakov igre naredimo
   #funkcija nam da zaporedje matrik igre življenja
-  zaporedje <- list(c(1:st_korakov))
+  zaporedje <- list()
   #dobimo seznam, ki nam da matriko v vsakem koraku
   zaporedje[[1]] <- zacetna_matrika
   dimenzije <- dim(zacetna_matrika)
@@ -118,11 +118,37 @@ celotna_igra <- function(st_korakov, zacetna_matrika){
     #na i-to v seznamu shranimo i-to matriko
   }
   return(zaporedje)
+} 
+
+
+## Pri igri življenja nas zanima tudi, ali je sistem v ravnotežju, se ponavlja, umre,...
+
+
+#zakljucek igre
+
+konec <- function(st_korakov, zacetna_matrika){
+  rezultat <- celotna_igra(st_korakov, zacetna_matrika)
+  for(i in 1:st_korakov){
+    if(all(rezultat[[i]] == 0)){
+      return(i)
+    }
+  }
+  return(print(sprintf("Ta igra se v %d. korakih ne zaključi.",st_korakov)))
 }
 
-#### Ponavljanje
-# #Pri igri življenja nas zanima tudi, ali je sistem v ravnotežju, se ponavlja, umre,...
-# kaj_se_zgodi <- function(koraki,zacetna_matrika){
-#   #zanima nas, kaj se zgodi po nekem številu korakov z začetno matriko
-#   
-# }
+
+# Ponavljanje
+
+ponavljanje <- function(st_korakov, zacetna_matrika){
+  rezultat <- celotna_igra(st_korakov, zacetna_matrika)
+  for(i in 1:st_korakov){
+    pregled <- rezultat[[i]]
+    for(j in i+1 :st_korakov){
+     if(pregled == rezultat[[j]]){
+       return(print(sprintf("Ta igra se zacne ponavljati v %d. koraku,
+                            in perioda je dolga %d..",i,j-i)))
+     } 
+    }
+  }
+  return(print("Ta igra se ne ponavlja"))
+}
