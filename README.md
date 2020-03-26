@@ -4,12 +4,7 @@ Smrtno rojstni procesi posebna vrsta Markovskih procesov v zveznem času, kjer o
 
 ![Prikaz procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/BD-proces.png)
 
-Ti procese lahko opazujemo za veliko skupino resničnih procesov. Kot prvo jih lahko opazujemo za populacije, najbolj enostaven primer le teh pa so populacije enoceličarjev.
-
-![Celica](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/celica.jpg)
-
-Ti organizmi se delijo in odmirajo neodvisno drug od drugega, dokler prostor, v katerem se nahajajo zadošča idelanim pogojem. Primer iz resničnega življenja so kvasovke, ki pospešujejo alkoholno vrenje, ki se nekaj časa delijo in odmirajo neodvisno, ko pa porabijo hrano se večanje populacije ustavi, nato pa začnejo pospešeno odmirati.
-
+Stanja procesa so $mathcal{N_0}$, ki predstavljajo velikost populacije. Proces ima eno vpijajoče stanje, in sicer 0. To je trenutek, ko je umrl zadnji osebek, in tako ne moremo imeti nobenega novega osebka več, ker ne moremo od nikjer več dobiti nikogar.
 V majhnem primeru lahko pokažemo to na spodnjem grafu. 
 
 ![Potek procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/potek.png)
@@ -18,9 +13,24 @@ Zelo je pomembno, kako hitro potekajo rojstva (delitve) in smrti v populaciji. V
 
 ![Potek procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/velikost.png)
 
-Poleg tega je za smrtno rojstne procese pomembno, kakšna je začetna velikost populacije. To je razvidno iz spodnjega grafa, kjer so porazdelitve rojstev in smrti enake kot zgoraj, le velikost začetne populacije je manjša, in sicer 10 namesto 50.
+Poleg tega je za smrtno rojstne procese pomembno, kakšna je začetna velikost populacije. To je razvidno iz spodnjega grafa, kjer so porazdelitve rojstev in smrti enake kot zgoraj, le velikost začetne populacije je manjša, in sicer 10 namesto 50. 
 
 ![Potek procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/velikost2.png)
+
+## Celica
+
+Te procese lahko opazujemo za raznolike resnične procese. Kot prvo jih lahko opazujemo za populacije, najbolj enostaven primer le teh pa so populacije enoceličarjev.
+
+![Celica](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/celica.jpg)
+
+Ti organizmi se delijo in odmirajo neodvisno drug od drugega, dokler prostor, v katerem se nahajajo zadošča idelanim pogojem. Primer iz resničnega življenja so kvasovke, ki pospešujejo alkoholno vrenje, ki se nekaj časa delijo in odmirajo neodvisno, ko pa porabijo hrano se večanje populacije ustavi, nato pa začnejo pospešeno odmirati.
+
+## Igra življenja
+
+![Igra življenja](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/game_of_life.jpg)
+
+[Conwayeva igra življenja](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) ni družabna igra. Gre za igro ene poteze, kjer igralec izbere začetno stanje matrike. Nato pa spremljamo, kako spreminja število in položaj živih celic.
+
 
 ## Ideja projekta
 Tema je opisana [tukaj](https://en.wikipedia.org/wiki/Birth%E2%80%93death_process). Pri tem projektu bom uporabljal programski jezik R. Gre za projektno nalogo pri predmetu matematika z računalnikom.
