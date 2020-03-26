@@ -47,7 +47,7 @@ smrti <- function(stevilka_porazdelitve,st_korakov){
 #zanima nas le gibanje do stevila korakov, ker bomo tako dobili resnično gibanje
 #ko dobimo 0 je populacija izumrla
 stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
-  vektor_gibanja <- rep(0,100)
+  vektor_gibanja <- rep(0,st_korakov)
   vektor_gibanja[1] <- zacetno
   smrt <- cumsum(smrti(st_smrt,st_korakov))
   rojstvo <- cumsum(rojstva(st_rojstvo,st_korakov))
@@ -64,6 +64,7 @@ stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
     }
   return(vektor_gibanja)
 } 
+
  
 #ta funkcija nam da delitev, ko imamo izumrtje 
 #dobimo tudi čas izumrtja

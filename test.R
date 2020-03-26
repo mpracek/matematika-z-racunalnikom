@@ -9,3 +9,10 @@ dat <- sample(c(0,1), replace=TRUE, size=n^2)
 mdat <- matrix(dat,nrow = n, ncol= n)
 mdat
 celotna_igra(m, mdat)
+
+#risanje grafov za Readme
+plot(stevilo(50,100,3,1),
+     xlab = "Korak",
+     ylab = "Velikost populacije",
+     main = "Velikost populacije skozi čas",
+     type = "s")
