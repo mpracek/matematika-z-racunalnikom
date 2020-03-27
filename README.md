@@ -29,7 +29,15 @@ Ti organizmi se delijo in odmirajo neodvisno drug od drugega, dokler prostor, v 
 
 ![Igra življenja](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/game_of_life.jpg)
 
-[Conwayeva igra življenja](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) ni družabna igra. Gre za igro ene poteze, kjer igralec izbere začetno stanje matrike. Nato pa spremljamo, kako spreminja število in položaj živih celic.
+[Conwayeva igra življenja](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) ni družabna igra. Gre za igro ene poteze, kjer igralec izbere začetno stanje modela. Nato pa spremljamo, kako spreminja število in položaj živih celic.
+
+Kot vsaka igra ima tudi ta igra svoja pravila. Tu imamo 4 osnovna pravila:
+1. Celica z manj kot dvema živima sosedoma umre.
+2. Celica z več kot tremi živimi sosedi umre.
+3. Celica z dvema ali tremi živimi sosedi umre.
+4. Mrtva celica z tremi živimi sosedi oživi.
+
+V našem primeru bo model matrika, torej bomo imeli 2D model. Ta igra lahko obstaja tudi v več dimenzijah.
 
 
 ## Ideja projekta
