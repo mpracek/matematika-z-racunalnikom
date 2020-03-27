@@ -141,12 +141,11 @@ konec <- function(st_korakov, zacetna_matrika){
 
 ponavljanje <- function(st_korakov, zacetna_matrika){
   rezultat <- celotna_igra(st_korakov, zacetna_matrika)
-  for(i in 1:st_korakov){
+  for(i in 1:(st_korakov-1)){
     pregled <- rezultat[[i]]
-    for(j in i+1 :st_korakov){
-     if(pregled == rezultat[[j]]){
-       return(print(sprintf("Ta igra se zacne ponavljati v %d. koraku,
-                            in perioda je dolga %d..",i,j-i)))
+    for(j in (i+1) :st_korakov){
+     if(all(pregled == rezultat[[j]])){
+       return(print(sprintf("Ta igra se zacne ponavljati v %d. koraku in perioda je dolga %d.",i,j-i)))
      } 
     }
   }
