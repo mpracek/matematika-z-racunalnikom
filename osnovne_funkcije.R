@@ -2,6 +2,8 @@
 # v tej datoteki bodo funkcije, ki bodo določile razmnoževanje
 # zanima nas hitrost rojstev, zanima nas torej kako hitro se bo nek posameznik delil
 
+source("../libraries/lib.r")
+
 
 #porazdelitvena je porazdelitvena fukcija, ki nam pove kako hitri so "prihodi",
 #torej kako hitro se posameznik deli
@@ -25,12 +27,14 @@ porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm) #,rbeta,rbinom,dgamma,dgeom,dhyper)
 
 #uredi, da bo lahko več parametrov
 rojstva <- function(stevilka_porazdelitve,st_korakov){
+  #st_korakov pove, koliko rojstev bomo imeli
   rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }
 
 #enako kot za rojstva
 smrti <- function(stevilka_porazdelitve,st_korakov){
+  #st_korakov pove, koliko smrti bomo imeli
   rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }
@@ -68,6 +72,38 @@ stevilo <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
   return(vektor_gibanja)
 } 
 
+
+stevilo_do_casa <- function(zacetno,st_korakov ,cas, st_rojstvo,st_smrt){
+  #st_korakov je tu neka poljubna visoka stevilka, npr. 1000
+  vektor_gibanja <- rep(0,2 * st_korakov)
+  vektor_gibanja[1] <- zacetno
+  smrt <- cumsum(smrti(st_smrt,st_korakov))
+  rojstvo <- cumsum(rojstva(st_rojstvo,st_korakov))
+  zadnje_rojstvo <- 1
+  zadnja_smrt <- 1
+  st_osebkov <- zacetno
+  skupni <- 0
+  stevec <- 2
+  while(skupni < cas){
+    if(smrt[zadnja_smrt]<rojstvo[zadnje_rojstvo]){
+      vektor_gibanja[stevec] <- vektor_gibanja[stevec-1] - 1
+      zadnja_smrt <- zadnja_smrt + 1
+      skupni <- smrt[zadnja_smrt]}
+    else{
+      vektor_gibanja[stevec] <- vektor_gibanja[stevec-1] + 1
+      zadnje_rojstvo <- zadnje_rojstvo + 1
+      skupni <- rojstvo[zadnje_rojstvo]}
+    skupni
+    if(vektor_gibanja[stevec] == 0){
+      return(vektor_gibanja[1:stevec])
+    }
+    else{
+      stevec <- stevec + 1
+    }
+  }  
+  skupni
+  return(skupni)
+}
  
 #ta funkcija nam da delitev, ko imamo izumrtje 
 #dobimo tudi čas izumrtja
