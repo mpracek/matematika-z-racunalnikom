@@ -25,6 +25,8 @@ Te procese lahko opazujemo za raznolike resnične procese. Kot prvo jih lahko op
 
 Ti organizmi se delijo in odmirajo neodvisno drug od drugega, dokler prostor, v katerem se nahajajo zadošča idelanim pogojem. Primer iz resničnega življenja so kvasovke, ki pospešujejo alkoholno vrenje, ki se nekaj časa delijo in odmirajo neodvisno, ko pa porabijo hrano se večanje populacije ustavi, nato pa začnejo pospešeno odmirati.
 
+Populacije, ki jih bomo gledali si bomo torej predstavljali kot enoceličarje.
+
 ## Igra življenja
 
 ![Igra življenja](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/game_of_life.jpg)
@@ -53,5 +55,8 @@ Manj znane knjižnjice bodo povezane z CRAN stranjo
 * shiny
 * [queueing](https://cran.r-project.org/web/packages/queueing/index.html)
 * ggplot2
+* [gganimate](https://cran.r-project.org/web/packages/gganimate/gganimate.pdf)
+* [plot.matrix](https://cran.r-project.org/web/packages/plot.matrix/vignettes/plot.matrix.html)
+* [shinydashboard](https://cran.r-project.org/web/packages/shinydashboard/shinydashboard.pdf)
 * bodo dodane sproti
 
