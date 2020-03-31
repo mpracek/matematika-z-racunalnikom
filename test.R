@@ -10,6 +10,13 @@ mdat <- matrix(dat,nrow = n, ncol= n)
 mdat
 celotna_igra(m, mdat)
 
+#barvanje matrik
+#to potebujemo za vizualizacijo igre življenja
+
+plot(mdat, col = topo.colors)
+plot(mdat)
+plot(mdat, col = c("black","blue"))
+
 #risanje grafov za Readme
 plot(stevilo(50,100,3,1),
      xlab = "Korak",

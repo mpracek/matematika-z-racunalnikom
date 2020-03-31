@@ -3,6 +3,7 @@
 #V tej datoteki bo sprogramirana igra življenja
 #upoštevali bomo pravila, ki jih je določil že Conway
 
+
 #igra zivljenja je smrtno rojstni proces v zaprtem prostoru, ki ga bo predstavljala matrika
 
 
@@ -150,4 +151,45 @@ ponavljanje <- function(st_korakov, zacetna_matrika){
     }
   }
   return(print("Ta igra se ne ponavlja"))
+}
+
+
+#risanje igre
+narisi_igro <- function(st_korakov, zacetna_matrika){
+  #črni kvadratki so mrtve celice
+  #modri kvadratki so žive celice
+  rezultat <- celotna_igra(st_korakov, zacetna_matrika)
+  for(i in 1:length(rezultat)){
+    plot(rezultat[[i]], col = c("blue","black"),
+         main = sprintf("Igra v %d koraku",i),
+         xlab = "", ylab ="")
+  }
+}
+
+
+#v ui bomo morali določiti tudi začetno matriko
+
+#poizkusi narediti, da lahko določimo sami
+
+doloci_random_matriko <- function(vrstice,stolpci){
+  #dal bom možnosti izbire velikosti, drugače bo začetna izbira za sedaj random
+  dat <- sample(c(0,1), replace=TRUE, size=vrstice*stolpci)
+  mdat <- matrix(dat,nrow = vrstice, ncol= stolpci)
+  return(mdat)
+}
+
+doloci_deter_matriko <- function(vrstice,stolpci,zaporedje){
+  #vrstice povedo št vrstice
+  #stolpci povedo število stolpcev
+  #zaporedje je podan vektor 0 in 1, ki opiše začetno stanje
+  if(vrstice*stolpci != length(zaporedje)){
+    return(print("Zaporedje ni prave dolžine."))
+  }
+  else if(sum(zaporedje==1) + sum(zaporedje==0) != length(zaporedje)){
+    return(print("Zaporedje vsebuje nepravilne znake"))
+  }
+  else{
+    mdat <- matrix(zaporedje,nrow = vrstice, ncol= stolpci)
+    return(mdat)
+    }
 }

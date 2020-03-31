@@ -1,18 +1,35 @@
 #Datoteka za uporabniski umesnik    115 120
 
 #zazenemo potrebne datoteke
-source("../libraries/lib.r")
-source("../osnovne_funkcije.r")
-source("../igra_zivljenja.r")
-source("../cakalne_vrste.r")
+source("../libraries/lib.R")
+source("../osnovne_funkcije.R")
+source("../igra_zivljenja.R")
+source("../cakalne_vrste.R")
 
 
 sidebar <- dashboardSidebar(hr(),
                             sidebarMenu(id="osnova",
+                                        
+                                        #prikazani grafi 
+                                        #zapisana osnovna matematična dejstva
+                                        #več podmenijev; -matematika
+                                        #                -narisano
+                                        
+                                        
                                         menuItem("Osnove matematike", tabName = "osnove", selected = TRUE)),
                             sidebarMenu(id="igra",
+                                        
+                                        
+                                        #podmeniji, ali matriko določim sam ali je random
+                                        #nato se odpre okno z matriko, in kaže napredek po korakih
+                                        
+                                        
                                         menuItem("Igra življenja",tabName = "igre"),
                             sidebarMenu(id="vrsta",
+                                        #podmeniji
+                                        #mm1
+                                        #mmn
+                                        #...
                                         menuItem("Čakalne vrste",tabName = "vrste"))
 ))
 

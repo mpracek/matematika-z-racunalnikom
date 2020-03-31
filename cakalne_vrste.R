@@ -1,7 +1,6 @@
 #cakalne vrste              115 120
 #v tej datoteki je matematika za cakalne vrste
 
-source("libraries/lib.r")
 
 #stevilo ljudi v cakalnih vrstah?
 #tuki zelim animacijo ljudi v cakalnici, cakalnih vrstah
