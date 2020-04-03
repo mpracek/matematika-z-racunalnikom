@@ -2,6 +2,11 @@
 #v tej datoteki je matematika za cakalne vrste
 
 
+#Tukaj bo le groba predstavitev, saj ima Andraž Pirnovar bolj natnačno zastavljeno temo
+#čakalnih vrst, in  bom zato sam le malo opisal povezavo.
+
+#pokazal bom le vizualizacijo in osnovo matematike za mm1
+
 #stevilo ljudi v cakalnih vrstah?
 #tuki zelim animacijo ljudi v cakalnici, cakalnih vrstah
 

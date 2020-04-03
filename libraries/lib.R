@@ -16,3 +16,4 @@ library(queuecomputer)
 library(queueing) #za čakalne vrste
 library(plot.matrix) #za vizualizacijo igre življenje
 library(gganimate) #za prikaz poteka
+library(plot3D)

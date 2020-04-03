@@ -2,9 +2,10 @@
 
 #zazenemo potrebne datoteke
 source("../libraries/lib.R")
-source("../osnovne_funkcije.R")
-source("../igra_zivljenja.R")
-source("../cakalne_vrste.R")
+source("../razumevanje/osnovne_funkcije.r")
+source("../modeli/igra_zivljenja.r")
+source("../modeli/igra_zivljenja_vec.r")
+source("../modeli/cakalne_vrste.r")
 
 
 sidebar <- dashboardSidebar(hr(),

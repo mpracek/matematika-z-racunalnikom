@@ -7,6 +7,7 @@ n <- 5
 m <- 9
 dat <- sample(c(0,1), replace=TRUE, size=n^2)
 mdat <- matrix(dat,nrow = n, ncol= n)
+X = array(sample(c(0,1), replace=TRUE, size=n^3), dim=c(n,n,n)) 
 mdat
 celotna_igra(m, mdat)
 
