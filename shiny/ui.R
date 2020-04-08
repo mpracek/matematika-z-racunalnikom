@@ -6,6 +6,7 @@ source("../razumevanje/osnovne_funkcije.r")
 source("../modeli/igra_zivljenja.r")
 source("../modeli/igra_zivljenja_vec.r")
 source("../modeli/cakalne_vrste.r")
+source("../vizualizacija/animacija.r")
 
 
 sidebar <- dashboardSidebar(hr(),
@@ -17,8 +18,14 @@ sidebar <- dashboardSidebar(hr(),
                                         #                -narisano
                                         
                                         
-                                        menuItem("Osnove matematike", tabName = "osnove", selected = TRUE)),
+                                        menuItem("Osnove matematike",
+                                                 tabName = "osnove", selected = TRUE)),
+                                        #pure birth; stopnja smrti = 0 
+                                        #pure death; stopnja rojstva = 0
+                            
+                            
                             sidebarMenu(id="igra",
+                                        
                                         
                                         
                                         #podmeniji, ali matriko določim sam ali je random
@@ -39,6 +46,10 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "osnove",
             fluidRow(sidebarPanel(
+              #tukaj definiram vse inpute, ki so potrebni!
+              #potrebujem izbiro porazdelitve, izbiro začetne populacije,
+              #izbiro hitrosti rojstev in smrti
+              #Tako bom določil potrebne parametre!
               sliderInput("min_max",
                           "Velikost zacetne populacije:",
                           min = 0,
@@ -47,7 +58,8 @@ body <- dashboardBody(
                           step = 1,
                           post = "",
                           sep = ".")),
-            mainPanel()
+            mainPanel( plotOutput("animacija")
+            )
             #sem gre koda iz osnovnih_funkcij
             )),
     tabItem(tabName = "igre"

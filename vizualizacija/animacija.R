@@ -1,0 +1,39 @@
+##              115 120
+# datoteka za animacije, vizualizacijo bolj zanimivih stvari
+#animacija velikosti populacije
+#uredi z ggplot, da bo delalo
+#nato naredi isto še za animacijo_do časa
+
+
+animacija_do_casa <- function(zacetno,st_korakov ,cas, st_rojstvo,st_smrt){
+  rezultat <- stevilo_do_casa(zacetno,st_korakov ,cas, st_rojstvo,st_smrt)
+}
+
+animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
+  rezultat <- stevilo(zacetno,st_korakov,st_rojstvo,st_smrt)
+  koraki <- c(1:st_korakov)
+  podatki <- data.frame(koraki, rezultat)
+  p <-  podatki %>% plot_ly(x = ~koraki, 
+                            y = ~rezultat, 
+                            frame = ~c(1:st_korakov),
+                            type = 'scatter',
+                            mode = 'lines')
+  return(p)
+}
+
+
+
+#igra življenja
+#risanje igre
+narisi_igro <- function(st_korakov, zacetna_matrika){
+  #črni kvadratki so mrtve celice
+  #modri kvadratki so žive celice
+  rezultat <- celotna_igra(st_korakov, zacetna_matrika)
+  for(i in 1:length(rezultat)){
+    plot(rezultat[[i]], col = c("blue","black"),
+         main = sprintf("Igra v %d koraku",i),
+         xlab = "", ylab ="")
+  }
+}
+
+#narisi igro želim animirati, tako da bodo koraki sami tekli

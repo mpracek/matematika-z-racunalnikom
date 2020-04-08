@@ -25,3 +25,13 @@ plot(stevilo(50,100,3,1),
      main = "Velikost populacije skozi čas",
      type = "s")
 
+#animacija
+rezultat <- stevilo(3,10,1,1)
+koraki <- c(1:10)
+podatki <- data.frame(koraki, rezultat)
+fig <- podatki %>%
+  plot_ly(
+    x = ~koraki, 
+    y = ~rezultat, 
+    type = 'scatter',
+    mode = 'lines')

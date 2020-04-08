@@ -154,17 +154,6 @@ ponavljanje <- function(st_korakov, zacetna_matrika){
 }
 
 
-#risanje igre
-narisi_igro <- function(st_korakov, zacetna_matrika){
-  #črni kvadratki so mrtve celice
-  #modri kvadratki so žive celice
-  rezultat <- celotna_igra(st_korakov, zacetna_matrika)
-  for(i in 1:length(rezultat)){
-    plot(rezultat[[i]], col = c("blue","black"),
-         main = sprintf("Igra v %d koraku",i),
-         xlab = "", ylab ="")
-  }
-}
 
 
 #v ui bomo morali določiti tudi začetno matriko

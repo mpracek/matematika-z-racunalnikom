@@ -3,6 +3,7 @@
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
+library(shinyanimate)
 library(knitr)
 library(dplyr)
 library(dbplyr)
@@ -15,5 +16,8 @@ library(apyramid) #za izgradnjo starostnih piramid
 library(queuecomputer)
 library(queueing) #za čakalne vrste
 library(plot.matrix) #za vizualizacijo igre življenje
-library(gganimate) #za prikaz poteka
 library(plot3D)
+library(xkcd) #ni nujno še, da bom rabil
+library(plotly) #za animacije
+
+

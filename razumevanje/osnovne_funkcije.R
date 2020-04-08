@@ -141,21 +141,3 @@ generacija <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
        xlab = "Koraki",ylab = "Frekvenca")
   
 }
-
-
-#animacija velikosti populacije
-#uredi z ggplot, da bo delalo
-#nato naredi isto še za animacijo_do časa
-
-
-animacija_do_casa <- function(zacetno,st_korakov ,cas, st_rojstvo,st_smrt){
-  rezultat <- stevilo_do_casa(zacetno,st_korakov ,cas, st_rojstvo,st_smrt)
-}
-
-animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
-  rezultat <- stevilo(zacetno,st_korakov,st_rojstvo,st_smrt)
-  mdat <- matrix(rezultat,ncol = 1)
-  podatki <- data.frame(mdat)
-  p <- ggplot(podatki) + geom_line() + labs(x = "Čas", y = "Število osebkov") 
-  p + geom_point() + transition_reveal(korak)
-}
