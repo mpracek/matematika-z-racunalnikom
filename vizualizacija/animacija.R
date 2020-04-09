@@ -12,13 +12,15 @@ animacija_do_casa <- function(zacetno,st_korakov ,cas, st_rojstvo,st_smrt){
 animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
   rezultat <- stevilo(zacetno,st_korakov,st_rojstvo,st_smrt)
   koraki <- c(1:st_korakov)
-  podatki <- data.frame(koraki, rezultat)
-  p <-  podatki %>% plot_ly(x = ~koraki, 
-                            y = ~rezultat, 
-                            frame = ~c(1:st_korakov),
-                            type = 'scatter',
-                            mode = 'lines')
-  return(p)
+  cas <- c(1:st_korakov)
+  podatki <- data.frame(koraki, rezultat,cas)
+  fig <- plot_ly(podatki, 
+                 x = ~koraki, 
+                 y = ~rezultat,
+                 frame = ~cas,
+                 type = 'scatter',
+                 mode = 'points+line')
+  fig
 }
 
 

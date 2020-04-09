@@ -28,10 +28,12 @@ plot(stevilo(50,100,3,1),
 #animacija
 rezultat <- stevilo(3,10,1,1)
 koraki <- c(1:10)
-podatki <- data.frame(koraki, rezultat)
-fig <- podatki %>%
-  plot_ly(
+cas <- c(1:10)
+podatki <- data.frame(koraki, rezultat, cas)
+fig <- plot_ly(podatki, 
     x = ~koraki, 
-    y = ~rezultat, 
+    y = ~rezultat,
+    frame = ~cas,
     type = 'scatter',
-    mode = 'lines')
+    mode = 'points+line')
+fig

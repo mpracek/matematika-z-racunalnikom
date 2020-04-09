@@ -2,7 +2,7 @@
 
 #zazenemo potrebne datoteke
 source("../libraries/lib.R")
-source("../razumevanje/osnovne_funkcije.r")
+source("../osnova/osnovne_funkcije.r")
 source("../modeli/igra_zivljenja.r")
 source("../modeli/igra_zivljenja_vec.r")
 source("../modeli/cakalne_vrste.r")
@@ -58,7 +58,7 @@ body <- dashboardBody(
                           step = 1,
                           post = "",
                           sep = ".")),
-            mainPanel( plotOutput("animacija")
+            mainPanel( plotlyOutput("animacija")
             )
             #sem gre koda iz osnovnih_funkcij
             )),

@@ -2,7 +2,7 @@
 
 #zazenemo potrebne datoteke
 source("../libraries/lib.r")
-source("../razumevanje/osnovne_funkcije.r")
+source("../osnova/osnovne_funkcije.r")
 source("../modeli/igra_zivljenja.r")
 source("../modeli/igra_zivljenja_vec.r")
 source("../modeli/cakalne_vrste.r")
@@ -18,10 +18,10 @@ source("../vizualizacija/animacija.r")
 
 server <- function(input, output) {
 #animacije so zgrajene z plotly!
-  input$zacetno_animacija
-  animacija <- reactive({
-    p <- animacija_obicajna(zacetno_animacija, st_korakov_animacija,
-                            st_rojstvo_animacija, st_smrt_animacija)
+animacija <- reactive({
+    #p <- animacija_obicajna(zacetno_animacija, st_korakov_animacija,
+    #                        st_rojstvo_animacija, st_smrt_animacija)
+  p <- animacija_obicajna(3,10,1,1)
   })
-  output$animacija <- renderPlot({print(p)}) 
+  output$animacija <- renderPlotly({p}) 
   }
