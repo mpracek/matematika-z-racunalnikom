@@ -10,34 +10,13 @@ source("../vizualizacija/animacija.r")
 
 
 sidebar <- dashboardSidebar(hr(),
+#tukaj je opisan stranski meni, ki se lahko spravi
                             sidebarMenu(id="osnova",
-                                        
-                                        #prikazani grafi 
-                                        #zapisana osnovna matematična dejstva
-                                        #več podmenijev; -matematika
-                                        #                -narisano
-                                        
-                                        
                                         menuItem("Osnove matematike",
                                                  tabName = "osnove", selected = TRUE)),
-                                        #pure birth; stopnja smrti = 0 
-                                        #pure death; stopnja rojstva = 0
-                            
-                            
-                            sidebarMenu(id="igra",
-                                        
-                                        
-                                        
-                                        #podmeniji, ali matriko določim sam ali je random
-                                        #nato se odpre okno z matriko, in kaže napredek po korakih
-                                        
-                                        
+                                        sidebarMenu(id="igra",
                                         menuItem("Igra življenja",tabName = "igre"),
                             sidebarMenu(id="vrsta",
-                                        #podmeniji
-                                        #mm1
-                                        #mmn
-                                        #...
                                         menuItem("Čakalne vrste",tabName = "vrste"))
 ))
 
@@ -46,30 +25,67 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "osnove",
             fluidRow(sidebarPanel(
-              #tukaj definiram vse inpute, ki so potrebni!
-              #potrebujem izbiro porazdelitve, izbiro začetne populacije,
-              #izbiro hitrosti rojstev in smrti
-              #Tako bom določil potrebne parametre!
-              sliderInput("min_max",
+              numericInput("zacetno_animacija",
                           "Velikost zacetne populacije:",
                           min = 0,
                           max = 100,
-                          value = c(0,100),
-                          step = 1,
-                          post = "",
-                          sep = ".")),
-            mainPanel( plotlyOutput("animacija")
-            )
-            #sem gre koda iz osnovnih_funkcij
-            )),
-    tabItem(tabName = "igre"
-            #sem gre koda iz igre_zivljenja
-            ),
-    tabItem(tabName= "vrste"
-            #sem gre koda iz cakalne_vrste
-            )
-))
-
+                          value = 3,
+                          step = 1),
+              numericInput("st_korakov_animacija",
+                          "Koliko korakov želimo, da simulacija naredi:",
+                          min = 0,
+                          max = 100,
+                          value = 10,
+                          step = 1),
+            numericInput("cas_animacija",
+                         "Trajanje procesa:",
+                         min = 0,
+                         max = 1000,
+                         value = 50,
+                         step = 1),
+            selectInput("st_rojstvo_animacija", 
+                        label = "Porazdelitev rojstev v modelu",
+                        choices = list("Normalna", 
+                                       "Eksponentna",
+                                       "Cauchyeva", 
+                                       "Lognormalna"),
+                        selected = "Normalna"),
+            selectInput("st_smrt_animacija", 
+                        label = "Porazdelitev smrti v modelu",
+                        choices = list("Normalna", 
+                                       "Eksponentna",
+                                       "Cauchyeva", 
+                                       "Lognormalna"),
+                        selected = "Normalna")),
+            mainPanel( plotlyOutput("animacija"),
+                       plotlyOutput("casovna_animacija"))
+                )),
+    tabItem(tabName = "igre",
+            fluidRow(sidebarPanel(
+              numericInput("st_korakov_igra",
+                           "Koliko korakov bo igra imela:",
+                           min = 1,
+                           max = 20,
+                           value = 10,
+                           step = 1),
+              numericInput("vrstice_igre",
+                           "Koliko vrstic naj bo imela igra:",
+                           min = 0,
+                           max = 100,
+                           value = 5,
+                           step = 1),
+              numericInput("stolpci_igre",
+                           "Koliko stolpcev naj bo imela igra:",
+                           min = 0,
+                           max = 100,
+                           value = 5,
+                           step = 1))),
+            mainPanel( plotOutput("animacija"),
+                       plotOutput("casovna_animacija"))),
+    tabItem(tabName= "vrste")
+)
+)
+            
   
 fluidPage(useShinyjs(),
           dashboardPage(
