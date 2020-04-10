@@ -60,28 +60,33 @@ body <- dashboardBody(
             mainPanel( plotlyOutput("animacija"),
                        plotlyOutput("casovna_animacija"))
                 )),
+    #plotly imam nenavadne povratke
+    #pogledati moram, če se da s delati z ggplotly
+    
     tabItem(tabName = "igre",
             fluidRow(sidebarPanel(
               numericInput("st_korakov_igra",
                            "Koliko korakov bo igra imela:",
                            min = 1,
-                           max = 20,
+                           max = 100,
                            value = 10,
                            step = 1),
               numericInput("vrstice_igre",
                            "Koliko vrstic naj bo imela igra:",
                            min = 0,
-                           max = 100,
+                           max = 1000,
                            value = 5,
                            step = 1),
               numericInput("stolpci_igre",
                            "Koliko stolpcev naj bo imela igra:",
                            min = 0,
-                           max = 100,
+                           max = 1000,
                            value = 5,
                            step = 1))),
-            mainPanel( plotOutput("animacija"),
-                       plotOutput("casovna_animacija"))),
+            mainPanel( plotOutput("celotna_igra"))),
+    #urediti moram še postavitev,
+    #Vmesnik mora vrniti ponavljanje, končnost....
+    #igra mora pokazati več oken, ne le zadnje
     tabItem(tabName= "vrste")
 )
 )
