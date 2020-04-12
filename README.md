@@ -4,7 +4,7 @@ Smrtno rojstni procesi posebna vrsta Markovskih procesov v zveznem času, kjer o
 
 ![Prikaz procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/BD-proces.png)
 
-Stanja procesa so $mathcal{N_0}$, ki predstavljajo velikost populacije. Proces ima eno vpijajoče stanje, in sicer 0. To je trenutek, ko je umrl zadnji osebek, in tako ne moremo imeti nobenega novega osebka več, ker ne moremo od nikjer več dobiti nikogar.
+Stanja procesa so naravna števila z 0, ki predstavljajo velikost populacije. Proces ima eno vpijajoče stanje, in sicer 0. To je trenutek, ko je umrl zadnji osebek, in tako ne moremo imeti nobenega novega osebka več, ker ne moremo od nikjer več dobiti nikogar.
 V majhnem primeru lahko pokažemo to na spodnjem grafu. 
 
 ![Potek procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/potek.png)
@@ -34,9 +34,9 @@ Populacije, ki jih bomo gledali si bomo torej predstavljali kot enoceličarje.
 [Conwayeva igra življenja](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) ni družabna igra. Gre za igro ene poteze, kjer igralec izbere začetno stanje modela. Nato pa spremljamo, kako spreminja število in položaj živih celic.
 
 Kot vsaka igra ima tudi ta igra svoja pravila. Tu imamo 4 osnovna pravila:
-1. Celica z manj kot dvema živima sosedoma umre.
-2. Celica z več kot tremi živimi sosedi umre.
-3. Celica z dvema ali tremi živimi sosedi umre.
+1. Živa celica z manj kot dvema živima sosedoma umre.
+2. Živa celica z več kot tremi živimi sosedi umre.
+3. Živa celica z dvema ali tremi živimi sosedi preživi.
 4. Mrtva celica z tremi živimi sosedi oživi.
 
 V našem primeru bo model matrika, torej bomo imeli 2D model. Ta igra lahko obstaja tudi v več dimenzijah.
@@ -58,5 +58,6 @@ Manj znane knjižnjice bodo povezane z CRAN stranjo
 * [gganimate](https://cran.r-project.org/web/packages/gganimate/gganimate.pdf)
 * [plot.matrix](https://cran.r-project.org/web/packages/plot.matrix/vignettes/plot.matrix.html)
 * [shinydashboard](https://cran.r-project.org/web/packages/shinydashboard/shinydashboard.pdf)
+* plotly
 * bodo dodane sproti
 
