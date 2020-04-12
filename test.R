@@ -40,4 +40,7 @@ fig
 
 
 #risanje za README
-ts.plot(stevilo(10,100,3,1),type = "s")
+ts.plot(stevilo(10,100,3,1),type = "s",
+        xlab = "Korak", ylab = "Velikost populacije",
+        main = "Velikost populacije skozi čas")
+
