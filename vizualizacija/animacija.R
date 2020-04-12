@@ -5,8 +5,18 @@
 #nato naredi isto še za animacijo_do časa
 
 
-animacija_do_casa <- function(zacetno,st_korakov ,cas, st_rojstvo,st_smrt){
-  rezultat <- stevilo_do_casa(zacetno,st_korakov ,cas, st_rojstvo,st_smrt)
+animacija_do_casa <- function(zacetno,st_korakov, cas, st_rojstvo,st_smrt){
+  rezultat <- stevilo_do_casa(zacetno,st_korakov, cas, st_rojstvo,st_smrt)
+  koraki <- c(1:st_korakov)
+  cas <- c(1:st_korakov)
+  podatki <- data.frame(koraki, rezultat,cas)
+  fig <- plot_ly(podatki, 
+                 x = ~koraki, 
+                 y = ~rezultat,
+                 frame = ~cas,
+                 type = 'scatter',
+                 mode = 'points+line')
+  fig  
 }
 
 animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){

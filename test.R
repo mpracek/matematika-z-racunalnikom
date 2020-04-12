@@ -37,3 +37,7 @@ fig <- plot_ly(podatki,
     type = 'scatter',
     mode = 'points+line')
 fig
+
+
+#risanje za README
+ts.plot(stevilo(10,100,3,1),type = "s")

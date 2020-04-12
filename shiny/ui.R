@@ -61,7 +61,7 @@ body <- dashboardBody(
                        plotlyOutput("casovna_animacija"))
                 )),
     #plotly imam nenavadne povratke
-    #pogledati moram, če se da s delati z ggplotly
+    #pogledati moram, če se da s delati z ggplotlyx
     
     tabItem(tabName = "igre",
             fluidRow(sidebarPanel(
