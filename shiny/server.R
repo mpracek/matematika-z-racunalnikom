@@ -19,22 +19,13 @@ source("../vizualizacija/animacija.r")
 server <- function(input, output) {
 #animacije so zgrajene z plotly!
 obicanja_animacija <- reactive({
-  p <- animacija_obicajna(zacetno_animacija = input$zacetno_animacija,
-                          st_korakov_animacija = input$st_korakov_animacija,
-                          st_rojstvo_animacija = input$st_korakov_animacija,
-                          st_smrt_animacija = input$st_smrt_animacija)
+  p <- animacija_obicajna(zacetno_animacija = input$zacetno,
+                          st_korakov_animacija = input$st_korakov,
+                          st_rojstvo_animacija = input$st_korakov,
+                          st_smrt_animacija = input$st_smrt)
   p
   })
-casovna_animacija <- reactive({
-  p <- animacija_do_casa(zacetno_animacija = input$zacetno_animacija,
-                         st_korakov_animacija = input$st_korakov_animacija,
-                         cas = input$cas_animacija,
-                         st_rojstvo_animacija = input$st_korakov_animacija,
-                         st_smrt_animacija = input$st_smrt_animacija)
-  p
-})
-output$animacija <- renderPlotly(print(obicanja_animacija())) 
-output$animacija_casovna <- renderPlotly(print(casovna_animacija()))
+output$animacija <- renderPlot(obicanja_animacija()) 
 
 risanje_igre <- reactive({
   p <- narisi_igro(st_korakov = input$st_korakov_igra,
@@ -43,4 +34,18 @@ risanje_igre <- reactive({
   p
 })
 output$celotna_igra <- renderPlot(risanje_igre())
+zakljucek <- reactive({
+  zacetna_matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
+                                          stolpci = input$stolpci_igre)
+  rezultat <- konec(st_korakov = input$st_korakov_igra, zacetna_matrika = zacetna_matrika)
+  return(rezultat)
+})
+output$stetje <- renderText(zakljucek())
+ponovitev <- reactive({
+  zacetna_matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
+                                           stolpci = input$stolpci_igre)
+  rezultat <- ponavljanje(st_korakov = input$st_korakov_igra, zacetna_matrika = zacetna_matrika)
+  return(rezultat)
+})
+output$ponovno <- renderText(ponovitev())
 }
