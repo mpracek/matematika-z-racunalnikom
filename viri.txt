@@ -1,1 +1,3 @@
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6014701/
+https://mathblog.com/the-game-of-life-in-octave/
+http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/

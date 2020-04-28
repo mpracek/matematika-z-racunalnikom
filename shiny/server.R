@@ -7,6 +7,8 @@ source("../modeli/igra_zivljenja.r")
 source("../modeli/igra_zivljenja_vec.r")
 source("../modeli/cakalne_vrste.r")
 source("../vizualizacija/animacija.r")
+source("../modeli/posebne_matrike.r")
+
 
 
 #ugotoviti moram, kako bomo prikazali animacijo v ui

@@ -38,7 +38,7 @@ fig <- plot_ly(podatki,
     mode = 'points+line')
 fig
 
-animacija_obicajna(10,10,1,1)
+animacija_obicajna(10,100,2,1)
 
 #risanje za README
 ts.plot(stevilo(10,100,3,1),type = "s",

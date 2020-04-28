@@ -158,27 +158,3 @@ ponavljanje <- function(st_korakov, zacetna_matrika){
 
 #v ui bomo morali določiti tudi začetno matriko
 
-#poizkusi narediti, da lahko določimo sami
-
-doloci_random_matriko <- function(vrstice,stolpci){
-  #dal bom možnosti izbire velikosti, drugače bo začetna izbira za sedaj random
-  dat <- sample(c(0,1), replace=TRUE, size=vrstice*stolpci)
-  mdat <- matrix(dat,nrow = vrstice, ncol= stolpci)
-  return(mdat)
-}
-
-doloci_deter_matriko <- function(vrstice,stolpci,zaporedje){
-  #vrstice povedo št vrstice
-  #stolpci povedo število stolpcev
-  #zaporedje je podan vektor 0 in 1, ki opiše začetno stanje
-  if(vrstice*stolpci != length(zaporedje)){
-    return(print("Zaporedje ni prave dolžine."))
-  }
-  else if(sum(zaporedje==1) + sum(zaporedje==0) != length(zaporedje)){
-    return(print("Zaporedje vsebuje nepravilne znake"))
-  }
-  else{
-    mdat <- matrix(zaporedje,nrow = vrstice, ncol= stolpci)
-    return(mdat)
-    }
-}
