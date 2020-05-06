@@ -11,6 +11,22 @@ X = array(sample(c(0,1), replace=TRUE, size=n^3), dim=c(n,n,n))
 mdat
 celotna_igra(m, mdat)
 
+staticno1<- c(0, 1, 1, 0,
+              1, 0, 0, 1,
+              0, 1, 1, 0)
+staticno2 <- c(0,1,0,1,0,1,1,0,1,0,1,0)
+mdat <- matrix(staticno1,nrow = 3, ncol= 4)
+mdat2 <- matrix(staticno2,nrow = 3, ncol= 4)
+
+celotna_igra(m, mdat)
+
+blinker <- c(0,1,0, 1, 0, 1)
+data <- data.frame(c(0,1,0),c(1,0,1))
+mdat <- matrix(blinker,nrow = 2, ncol= 3)
+celotna_igra(m, mdat)
+
+narisi_igro(10,mdat)
+a<-narisi_igro(10,mdat2)
 #barvanje matrik
 #to potebujemo za vizualizacijo igre življenja
 

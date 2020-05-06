@@ -19,5 +19,5 @@ library(plot.matrix) #za vizualizacijo igre življenje
 library(plot3D)
 library(xkcd) #ni nujno še, da bom rabil
 library(plotly) #za animacije
-
+library(gridExtra)
 
