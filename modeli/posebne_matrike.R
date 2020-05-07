@@ -75,7 +75,6 @@ gosper1 <- matrix(gosper,nrow = 11, ncol= 39,byrow=TRUE)
 
 
 #statično
-X[2:4, 1:3] = 1
 staticno1<- c(0, 1, 1, 0,
                1, 0, 0, 1,
                0, 1, 1, 0)
@@ -95,8 +94,8 @@ staticno3a <- matrix(staticno3,nrow = 3, ncol= 3,byrow = TRUE)
 
 
 #rotacija
-blinker = c(1, 1, 1)
-rotacija <- matrix(blinker,nrow = 1, ncol= 3,byrow=TRUE)
+blinker = c(0,0,0,1, 1, 1,0,0,0)
+rotacija <- matrix(blinker,nrow = 3, ncol= 3,byrow=TRUE)
 
 #dve vrstici po 4
 toad = c(1, 1, 1, 0,
@@ -149,7 +148,7 @@ ladja <- matrix(boat,nrow = 3, ncol= 3,byrow=TRUE)
 r_pentomino = c(0, 1, 1,
                1, 1, 0,
                0, 1, 0)
-pent <- matrix(r_pentomimo,nrow = 3, ncol= 3,byrow=TRUE)
+pent <- matrix(r_pentomino,nrow = 3, ncol= 3,byrow=TRUE)
 #4x4
 beacon = c(0, 0, 1, 1,
           0, 0, 1, 1,

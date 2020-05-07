@@ -42,21 +42,12 @@ animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
 narisi_igro <- function(st_korakov, zacetna_matrika){
   #črni kvadratki so mrtve celice
   #modri kvadratki so žive celice
-  plot_list <- list()
   rezultat <- celotna_igra(st_korakov, zacetna_matrika)
   for(i in 1:length(rezultat)){
     p <- plot(rezultat[[i]], col = c("blue","black"),
          main = sprintf("Igra v %d koraku",i),
          xlab = "", ylab ="")
-    plot_list[[i]] <- p
-  }
-  print(plot_list)
-  # grid.arrange(
-  #   for(i in 1:length(rezultat)){
-  #     plot_list[[i]]
-  # }
-  #)
-  return(plot_list)
+    print(p)
+    }
 }
-
 

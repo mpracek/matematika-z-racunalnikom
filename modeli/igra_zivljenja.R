@@ -131,7 +131,7 @@ konec <- function(st_korakov, zacetna_matrika){
   rezultat <- celotna_igra(st_korakov, zacetna_matrika)
   for(i in 1:st_korakov){
     if(all(rezultat[[i]] == 0)){
-      return(i)
+      return(print(sprintf("Ta igra se zaključi v koraku %d.",i)))
     }
   }
   return(print(sprintf("Ta igra se v %d. korakih ne zaključi.",st_korakov)))
