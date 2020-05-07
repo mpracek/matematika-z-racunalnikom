@@ -1,5 +1,7 @@
-# Rojstno smrtni procesi
+# Igra življenja
+V projektu sem se osredotočil na igro živjenja. Da bi lahko le te razumei, moramo najprej pogledati smrtno rojstne procese.
 
+## Smrtno rojstni procesi
 Smrtno rojstni procesi posebna vrsta Markovskih procesov v zveznem času, kjer obstajata le dve vrsti sprememb stanj. Prva je, da se populacija za eno poveča, torej smo dobili rojstvo, druga pa, da se populacija za eno zmanjša, torej smo imeli smrt.
 
 ![Prikaz procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/BD-proces.png)
@@ -45,19 +47,15 @@ V našem primeru bo model matrika, torej bomo imeli 2D model. Ta igra lahko obst
 ## Ideja projekta
 Tema je opisana [tukaj](https://en.wikipedia.org/wiki/Birth%E2%80%93death_process). Pri tem projektu bom uporabljal programski jezik R. Gre za projektno nalogo pri predmetu matematika z računalnikom.
 
-Ideja tega projekta je, da pripravim Shiny vmesnik, ki bo omogočal interaktivno spoznavanje *rojstno-smrtnih procesov*.
-V okviru tega bom predstavil tudi [igro življenja](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) ter čakalne vrste.
+Ideja tega projekta je, da pripravim Shiny vmesnik, ki bo omogočal interaktivno spoznavanje *igre življenja*.
 Obiskovalec bo lahko začel igro življenja, ne bo pa je mogel igrati, saj je to igra nič igralcev. 
 
 
 ### Potrebne knjižnjice
 Manj znane knjižnjice bodo povezane z CRAN stranjo
 * shiny
-* [queueing](https://cran.r-project.org/web/packages/queueing/index.html)
 * ggplot2
-* [gganimate](https://cran.r-project.org/web/packages/gganimate/gganimate.pdf)
 * [plot.matrix](https://cran.r-project.org/web/packages/plot.matrix/vignettes/plot.matrix.html)
 * [shinydashboard](https://cran.r-project.org/web/packages/shinydashboard/shinydashboard.pdf)
-* plotly
 * bodo dodane sproti
 
