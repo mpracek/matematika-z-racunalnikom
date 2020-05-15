@@ -14,16 +14,20 @@ source("../modeli/posebne_matrike.r")
 sidebar <- dashboardSidebar(hr(),
 #tukaj je opisan stranski meni, ki se lahko spravi
                             sidebarMenu(id = "zacetek",
-                                        menuItem("Domača stran",
-                                                 tabName = "zacetek", selected = TRUE)),
+                                        menuItem("Uvod",
+                                                 tabName = "zacetek", selected = TRUE,
+                                                 icon = tags$i(class="fas fa-play-circle"))),
                             sidebarMenu(id="osnova",
-                                        menuItem("Razumevanje rojstno-smrtnih procesov",
-                                                 tabName = "osnove")),
+                                        menuItem("Rojstno-smrtni procesi",
+                                                 tabName = "osnove",
+                                                 icon = tags$i("fas fa-skull-crossbones"))),
                             sidebarMenu(id="igra",
-                                        menuItem("Igra življenja",tabName = "igre"),
+                                        menuItem("Igra življenja",tabName = "igre",
+                                                 icon = tags$i(class="fas fa-heartbeat"))),
                             sidebarMenu(id="vrsta",
-                                        menuItem("Posebni primeri",tabName = "vrste"))
-))
+                                        menuItem("Posebni primeri",tabName = "vrste",
+                                                 icon = tags$i(class="fas fa-surprise")))
+)
 
 
 body <- dashboardBody(
@@ -295,7 +299,7 @@ body <- dashboardBody(
                                  textOutput("ponovno_vroom"),
                                  plotOutput("vroom_vroom")
                        )),
-              tabPanel("Želod",
+              tabPanel("Želod",icon = tags$i(class="fas fa-acorn"),
                        sidebarPanel(numericInput("koraki_hrast",
                                                  "Koliko korakov bo igra imela:",
                                                  min = 1,
