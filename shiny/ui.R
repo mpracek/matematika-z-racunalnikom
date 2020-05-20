@@ -95,11 +95,12 @@ body <- dashboardBody(
               textOutput("konec"),
               textOutput("ponovno"),
               plotOutput("celotna_igra")),
+              #uiOutput("plots")),
               sidebarPanel(
                 numericInput("st_korakov_igra",
                              "Koliko korakov bo igra imela:",
                              min = 1,
-                             max = 10000,
+                             max = 100,
                              value = 10,
                              step = 1),
                 p("Tukaj določimo število korakov"),

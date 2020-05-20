@@ -9,41 +9,65 @@ source("../modeli/cakalne_vrste.r")
 source("../vizualizacija/animacija.r")
 source("../modeli/posebne_matrike.r")
 
-
-
-#ugotoviti moram, kako bomo prikazali animacijo v ui
-
-
-#sedaj moram spraviti več plotov na eno stran
-#opisati nekater stvari
+#za potrebe risanja potrebujemo parameter max_plot zunaj funkcije server
+#max_plot <- 100
 
 
 server <- function(input, output) {
-#animacije so zgrajene z plotly!
-obicanja_animacija <- eventReactive(input$go2,{
+
+  
+  
+# output$plots <- renderUI({
+#     plot_output_list <- lapply(1:input$st_korakov_igra, function(i) {
+#       plotname <- paste("Igra v koraku številka", i, sep="")
+#       matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
+#                                        stolpci = input$stolpci_igre)
+#       
+#       plotOutput(plotname)
+#     })
+#     do.call(tagList, plot_output_list)
+#   })
+#   for (i in 1:max_plot){
+#     local({
+#       my_i <- i
+#       plotname <- paste("plot", my_i, sep="")
+#       output[[plotname]] <- renderPlot({
+#         p <- plot(matrika)
+#         p
+#       })
+#     })}
+# 
+
+
+  
+  obicanja_animacija <- eventReactive(input$go2,{
   p <- animacija_obicajna(zacetno = input$zacetno2,
                           st_korakov = input$st_korakov2,
-                          st_rojstvo = input$st_korakov2,
+                          st_rojstvo = input$st_rojstvo2,
                           st_smrt = input$st_smrt2)
   p
   })
 output$animacija <- renderPlot(obicanja_animacija()) 
 
 risanje_igre <- eventReactive(input$go,{
-  p <- narisi_igro(st_korakov = input$st_korakov_igra,
-                   zacetna_matrika = doloci_random_matriko(vrstice = input$vrstice_igre,
-                                                           stolpci = input$stolpci_igre))
-  p
+  matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
+                                   stolpci = input$stolpci_igre)
+  for(i in 2: input$st_korakov_igra){
+    p <- narisi_igro(st_korakov = i,
+                     zacetna_matrika =  matrika)
+    p
+  }
+  
 })
 output$celotna_igra <- renderPlot(risanje_igre())
-zakljucek <- reactive({
+zakljucek <- eventReactive(input$go,{
   zacetna_matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
                                           stolpci = input$stolpci_igre)
   rezultat <- konec(st_korakov = input$st_korakov_igra, zacetna_matrika = zacetna_matrika)
   return(rezultat)
 })
 output$stetje <- renderText(zakljucek())
-ponovitev <- reactive({
+ponovitev <-eventReactive(input$go,{
   zacetna_matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
                                            stolpci = input$stolpci_igre)
   rezultat <- ponavljanje(st_korakov = input$st_korakov_igra, zacetna_matrika = zacetna_matrika)

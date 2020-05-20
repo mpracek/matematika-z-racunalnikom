@@ -47,7 +47,7 @@ narisi_igro <- function(st_korakov, zacetna_matrika){
     p <- plot(rezultat[[i]], col = c("blue","black"),
          main = sprintf("Igra v %d koraku",i),
          xlab = "", ylab ="")
-    print(p)
-    }
+    p
+  }
 }
 

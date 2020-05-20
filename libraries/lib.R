@@ -21,3 +21,4 @@ library(xkcd) #ni nujno še, da bom rabil
 library(plotly) #za animacije
 library(gridExtra)
 library(reshape2)
+library(ggplotify)
