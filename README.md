@@ -57,5 +57,6 @@ Manj znane knjižnjice bodo povezane z CRAN stranjo
 * ggplot2
 * [plot.matrix](https://cran.r-project.org/web/packages/plot.matrix/vignettes/plot.matrix.html)
 * [shinydashboard](https://cran.r-project.org/web/packages/shinydashboard/shinydashboard.pdf)
+* [ggplotify](https://cran.r-project.org/web/packages/ggplotify/vignettes/ggplotify.html)
 * bodo dodane sproti
 
