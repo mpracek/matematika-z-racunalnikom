@@ -26,6 +26,7 @@ porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm) #,rbeta,rbinom,dgamma,dgeom,dhyper)
 #uredi, da bo lahko več parametrov
 rojstva <- function(stevilka_porazdelitve,st_korakov){
   #st_korakov pove, koliko rojstev bomo imeli
+  porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm)
   rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }
@@ -33,6 +34,7 @@ rojstva <- function(stevilka_porazdelitve,st_korakov){
 #enako kot za rojstva
 smrti <- function(stevilka_porazdelitve,st_korakov){
   #st_korakov pove, koliko smrti bomo imeli
+  porazdelitve <- c(rnorm,rexp,rcauchy,rlnorm)
   rezultat <- abs(porazdelitve[[stevilka_porazdelitve]](st_korakov))
   return(rezultat)
 }

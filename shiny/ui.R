@@ -41,52 +41,49 @@ body <- dashboardBody(
             )
     ),
     tabItem(tabName = "osnove",
-            
             #problemi, ki jih imam tukaj so prikaz unused arguments v shiny vmesniku
-            
-            
-            fluidRow(mainPanel( p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese.
+            fluidRow(sidebarPanel(
+              p("Tu izberemo parametre rojstno smrtnega procesa"),
+              numericInput("zacetno2",
+                           "Velikost zacetne populacije:",
+                           min = 0,
+                           max = 100,
+                           value = 3,
+                           step = 1),
+              p("Velikost začetne populacije vpliva na hitrost izumrtja."),
+              numericInput("st_korakov2",
+                           "Koliko korakov želimo, da simulacija naredi:",
+                           min = 0,
+                           max = 100,
+                           value = 10,
+                           step = 1),
+              p("Število korakov nam bo povedalo, kako daleč v prihodnost vidimo."),
+              selectInput("st_rojstvo2", 
+                          label = "Porazdelitev rojstev v modelu",
+                          c("Normalna" = 1, 
+                            "Eksponentna" = 2,
+                            "Cauchyeva" = 3, 
+                            "Lognormalna" = 4)),
+              p("Izberemo porazdelitev rojstev."),
+              selectInput("st_smrt2", 
+                          label = "Porazdelitev smrti v modelu",
+                          c("Normalna" = 1, 
+                            "Eksponentna" = 2,
+                            "Cauchyeva" = 3, 
+                            "Lognormalna" = 4)),
+              p("Izberemo porazdelitev smrti."),
+              actionButton("go2", "Poglejmo si prikaz")),
+            mainPanel( p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese.
                          Vsak si lahko tu sam izbere, kakšen proces bo začel. 
                          Izberi si porazdelitev smrti in porazdelitev rojstev in opazuj spremembe,
                          ki jih graf prikaže. Vidimo, da so porazdelitve zelo pomembne, 
                          prav tako pa vpliva velikost začetne populacije."),
-              plotOutput("animacija")),
-              sidebarPanel(
-                p("Tu izberemo parametre rojstno smrtnega procesa"),
-                numericInput("zacetno",
-                             "Velikost zacetne populacije:",
-                             min = 0,
-                             max = 100,
-                             value = 3,
-                             step = 1),
-                p("Velikost začetne populacije vpliva na hitrost izumrtja."),
-                numericInput("st_korakov",
-                             "Koliko korakov želimo, da simulacija naredi:",
-                             min = 0,
-                             max = 100,
-                             value = 10,
-                             step = 1),
-                p("Število korakov nam bo povedalo, kako daleč v prihodnost vidimo."),
-                selectInput("st_rojstvo", 
-                            label = "Porazdelitev rojstev v modelu",
-                            c("Normalna" = 1, 
-                              "Eksponentna" = 2,
-                              "Cauchyeva" = 3, 
-                              "Lognormalna" = 4)),
-                p("Izberemo porazdelitev rojstev."),
-                selectInput("st_smrt", 
-                            label = "Porazdelitev smrti v modelu",
-                            c("Normalna" = 1, 
-                              "Eksponentna" = 2,
-                              "Cauchyeva" = 3, 
-                              "Lognormalna" = 4)),
-                p("Izberemo porazdelitev smrti.")))),
+              plotOutput("animacija")))
+            ),
     tabItem(tabName = "igre",
             fluidRow(mainPanel(p("Ideja Johna Conwaya je bila prikazati, kako v zaprtem prostoru deluje 
                         delitev celic. Navadno nas zanima kako se igra ponavlja oziroma kako se konča.
                         Zato bomo pogledali kako se naša matrika obnaša na korakih, ki smo jih pogledali."),
-                      textOutput("konec"),
-                      textOutput("ponovno"),
                       p("Naravna vprašanja življenja so kdaj se bo le to končalo, in ali se bo kaj ponovilo.
                         No v tem primeru lahko hitro vidimo, da ponavljanje pomeni, da se igra ne bo končala.
                         Imamo namreč determinističen model, ki ne bo nikoli spremenil svojih pravil. Tako bomo
@@ -94,7 +91,9 @@ body <- dashboardBody(
                         V tem primeru bo namreč veljalo, da se v vsakem naslednjem krogu igra ponavlja in sicer s
                          s periodo 1. Lahko bi torej rekli, da ponavljanje negira zaključek, zaključek pa
                          implicira ponavljanje."),
-                      
+                      actionButton("go", "Poglejmo si igro"),
+              textOutput("konec"),
+              textOutput("ponovno"),
               plotOutput("celotna_igra")),
               sidebarPanel(
                 numericInput("st_korakov_igra",

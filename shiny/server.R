@@ -20,16 +20,16 @@ source("../modeli/posebne_matrike.r")
 
 server <- function(input, output) {
 #animacije so zgrajene z plotly!
-obicanja_animacija <- reactive({
-  p <- animacija_obicajna(zacetno_animacija = input$zacetno,
-                          st_korakov_animacija = input$st_korakov,
-                          st_rojstvo_animacija = input$st_korakov,
-                          st_smrt_animacija = input$st_smrt)
+obicanja_animacija <- eventReactive(input$go2,{
+  p <- animacija_obicajna(zacetno = input$zacetno2,
+                          st_korakov = input$st_korakov2,
+                          st_rojstvo = input$st_korakov2,
+                          st_smrt = input$st_smrt2)
   p
   })
 output$animacija <- renderPlot(obicanja_animacija()) 
 
-risanje_igre <- reactive({
+risanje_igre <- eventReactive(input$go,{
   p <- narisi_igro(st_korakov = input$st_korakov_igra,
                    zacetna_matrika = doloci_random_matriko(vrstice = input$vrstice_igre,
                                                            stolpci = input$stolpci_igre))
