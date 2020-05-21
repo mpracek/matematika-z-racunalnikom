@@ -37,7 +37,8 @@ body <- dashboardBody(
               h1("Igra življenja"),
               img(src = "https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/game_of_life.jpg"),
               p("Igra življenja je eden izmed najbolj zanimivih matematičnih modelov.
-                Z njim lahko predstavimo kako se spreminja število živih celic v zaprtem prostoru.")
+                Z njim lahko predstavimo kako se spreminja število živih celic v zaprtem prostoru."),
+              includeMarkdown("igra.md")
             )
     #tukaj moram dodati še opise za začetek, sicer smo skoraj končali
             ),
@@ -74,7 +75,8 @@ body <- dashboardBody(
                             "Lognormalna" = 4)),
               p("Izberemo porazdelitev smrti."),
               actionButton("go2", "Poglejmo si prikaz")),
-            mainPanel( p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese.
+            mainPanel( includeMarkdown("osnove.md"),
+            p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese.
                          Vsak si lahko tu sam izbere, kakšen proces bo začel. 
                          Izberi si porazdelitev smrti in porazdelitev rojstev in opazuj spremembe,
                          ki jih graf prikaže. Vidimo, da so porazdelitve zelo pomembne, 
