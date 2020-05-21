@@ -1,8 +1,8 @@
 # Igra življenja
-V projektu sem se osredotočil na igro živjenja. Da bi lahko le te razumei, moramo najprej pogledati smrtno rojstne procese.
+V projektu sem se osredotočil na igro živjenja. Da bi lahko le te razumeli, moramo najprej pogledati smrtno rojstne procese. 
 
 ## Smrtno rojstni procesi
-Smrtno rojstni procesi posebna vrsta Markovskih procesov v zveznem času, kjer obstajata le dve vrsti sprememb stanj. Prva je, da se populacija za eno poveča, torej smo dobili rojstvo, druga pa, da se populacija za eno zmanjša, torej smo imeli smrt.
+Smrtno rojstni procesi posebna vrsta markovskih procesov v zveznem času, kjer obstajata le dve vrsti sprememb stanj. Prva je, da se populacija za eno poveča, torej smo dobili rojstvo, druga pa, da se populacija za eno zmanjša, torej smo imeli smrt.
 
 ![Prikaz procesa](https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/BD-proces.png)
 
@@ -27,7 +27,9 @@ Te procese lahko opazujemo za raznolike resnične procese. Kot prvo jih lahko op
 
 Ti organizmi se delijo in odmirajo neodvisno drug od drugega, dokler prostor, v katerem se nahajajo zadošča idelanim pogojem. Primer iz resničnega življenja so kvasovke, ki pospešujejo alkoholno vrenje, ki se nekaj časa delijo in odmirajo neodvisno, ko pa porabijo hrano se večanje populacije ustavi, nato pa začnejo pospešeno odmirati.
 
-Populacije, ki jih bomo gledali si bomo torej predstavljali kot enoceličarje.
+Populacije, ki jih bomo gledali si bomo torej predstavljali kot enoceličarje. 
+
+Igro življenja si lahko predstavljamo kot poenostavljen model prostora enoceličarjev. 
 
 ## Igra življenja
 
@@ -41,11 +43,10 @@ Kot vsaka igra ima tudi ta igra svoja pravila. Tu imamo 4 osnovna pravila:
 3. Živa celica z dvema ali tremi živimi sosedi preživi.
 4. Mrtva celica z tremi živimi sosedi oživi.
 
-V našem primeru bo model matrika, torej bomo imeli 2D model. Ta igra lahko obstaja tudi v več dimenzijah.
-
+Igra življenja ima določen potek že ob samem začetku, saj je vse odvisno od začetne porazdelitve živih celic. Ker je rezultat determinističen, ne gre za slučajni proces, zato ne moremo reči, da gre za primer standarden primer smrtno rojstnih procesov. Kar pa lahko rečemo je da velja, da je začetna porazdelitev slučajna. Torej gre za poseben primer rojstno smrtnih procesov, kjer ima posebno porazdelitev le začetek. 
 
 ## Ideja projekta
-Tema je opisana [tukaj](https://en.wikipedia.org/wiki/Birth%E2%80%93death_process). Pri tem projektu bom uporabljal programski jezik R. Gre za projektno nalogo pri predmetu matematika z računalnikom.
+Pri tem projektu bom uporabljal programski jezik R. Gre za projektno nalogo pri predmetu matematika z računalnikom.
 
 Ideja tega projekta je, da pripravim Shiny vmesnik, ki bo omogočal interaktivno spoznavanje *igre življenja*.
 Obiskovalec bo lahko začel igro življenja, ne bo pa je mogel igrati, saj je to igra nič igralcev. 
@@ -58,5 +59,5 @@ Manj znane knjižnjice bodo povezane z CRAN stranjo
 * [plot.matrix](https://cran.r-project.org/web/packages/plot.matrix/vignettes/plot.matrix.html)
 * [shinydashboard](https://cran.r-project.org/web/packages/shinydashboard/shinydashboard.pdf)
 * [ggplotify](https://cran.r-project.org/web/packages/ggplotify/vignettes/ggplotify.html)
-* bodo dodane sproti
+* plotly
 
