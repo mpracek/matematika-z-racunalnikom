@@ -9,35 +9,9 @@ source("../modeli/cakalne_vrste.r")
 source("../vizualizacija/animacija.r")
 source("../modeli/posebne_matrike.r")
 
-#za potrebe risanja potrebujemo parameter max_plot zunaj funkcije server
-#max_plot <- 100
-
+#vse kar moramo narediti je še urediti razpored grafov v ui
 
 server <- function(input, output) {
-
-  
-  
-# output$plots <- renderUI({
-#     plot_output_list <- lapply(1:input$st_korakov_igra, function(i) {
-#       plotname <- paste("Igra v koraku številka", i, sep="")
-#       matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
-#                                        stolpci = input$stolpci_igre)
-#       
-#       plotOutput(plotname)
-#     })
-#     do.call(tagList, plot_output_list)
-#   })
-#   for (i in 1:max_plot){
-#     local({
-#       my_i <- i
-#       plotname <- paste("plot", my_i, sep="")
-#       output[[plotname]] <- renderPlot({
-#         p <- plot(matrika)
-#         p
-#       })
-#     })}
-# 
-
 
   
 obicanja_animacija <- eventReactive(input$go2,{
