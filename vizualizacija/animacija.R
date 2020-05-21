@@ -29,6 +29,9 @@ animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
   podatki <- data.frame(koraki, rezultat,cas)
   fig <- ggplot(podatki, aes(x = koraki,
                              y = rezultat)) +
+    ggtitle("Potek rojstno smrtnega procesa") +
+    xlab("Korak") + ylab("Število osebkov") +
+    #Dodaj še poimenovanje osi!!
     geom_point(aes(frame=koraki))
   fig <- ggplotly(fig)
   fig

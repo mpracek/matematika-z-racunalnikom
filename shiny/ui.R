@@ -20,7 +20,7 @@ sidebar <- dashboardSidebar(hr(),
                             sidebarMenu(id="osnova",
                                         menuItem("Rojstno-smrtni procesi",
                                                  tabName = "osnove",
-                                                 icon = tags$i("fas fa-skull-crossbones"))),
+                                                 icon = tags$i(class="fas fa-user-alt-slash"))),
                             sidebarMenu(id="igra",
                                         menuItem("Igra življenja",tabName = "igre",
                                                  icon = tags$i(class="fas fa-heartbeat"))),
@@ -39,7 +39,8 @@ body <- dashboardBody(
               p("Igra življenja je eden izmed najbolj zanimivih matematičnih modelov.
                 Z njim lahko predstavimo kako se spreminja število živih celic v zaprtem prostoru.")
             )
-    ),
+    #tukaj moram dodati še opise za začetek, sicer smo skoraj končali
+            ),
     tabItem(tabName = "osnove",
             #problemi, ki jih imam tukaj so prikaz unused arguments v shiny vmesniku
             fluidRow(sidebarPanel(
@@ -54,7 +55,7 @@ body <- dashboardBody(
               numericInput("st_korakov2",
                            "Koliko korakov želimo, da simulacija naredi:",
                            min = 0,
-                           max = 100,
+                           max = 10000,
                            value = 10,
                            step = 1),
               p("Število korakov nam bo povedalo, kako daleč v prihodnost vidimo."),
@@ -78,10 +79,37 @@ body <- dashboardBody(
                          Izberi si porazdelitev smrti in porazdelitev rojstev in opazuj spremembe,
                          ki jih graf prikaže. Vidimo, da so porazdelitve zelo pomembne, 
                          prav tako pa vpliva velikost začetne populacije."),
-              plotOutput("animacija")))
+                       p("Ko v levem oknu izberemo vse potrebne parametre, kliknemo gumb poglejmo si prikaz.
+                         Ko se nam pojavi okno z grafom lahko kliknemo gumb Play, ki bo zagnal potek procesa.
+                         Prav tako lahko z drsnikom to premaknemo sami."),
+              uiOutput("animacija")))
             ),
     tabItem(tabName = "igre",
-            fluidRow(mainPanel(p("Ideja Johna Conwaya je bila prikazati, kako v zaprtem prostoru deluje 
+            fluidRow(sidebarPanel(
+              numericInput("st_korakov_igra",
+                           "Zanima nas igra v koraku številka:",
+                           min = 1,
+                           max = 10000,
+                           value = 10,
+                           step = 1),
+              p("Tukaj določimo korak, v katerem bomo pogledali igro"),
+              numericInput("vrstice_igre",
+                           "Koliko vrstic naj bo imela igra:",
+                           min = 1,
+                           max = 10000,
+                           value = 10,
+                           step = 1),
+              numericInput("stolpci_igre",
+                           "Koliko stolpcev naj bo imela igra:",
+                           min = 1,
+                           max = 10000,
+                           value = 10,
+                           step = 1),
+              p("S stolpci in vrsticami določimo dimenzijo igre."),
+              actionButton("matrika", "Pridobi matriko"),
+              actionButton("go", "Poglejmo si igro")
+            ),
+            mainPanel(p("Ideja Johna Conwaya je bila prikazati, kako v zaprtem prostoru deluje 
                         delitev celic. Navadno nas zanima kako se igra ponavlja oziroma kako se konča.
                         Zato bomo pogledali kako se naša matrika obnaša na korakih, ki smo jih pogledali."),
                       p("Naravna vprašanja življenja so kdaj se bo le to končalo, in ali se bo kaj ponovilo.
@@ -91,32 +119,16 @@ body <- dashboardBody(
                         V tem primeru bo namreč veljalo, da se v vsakem naslednjem krogu igra ponavlja in sicer s
                          s periodo 1. Lahko bi torej rekli, da ponavljanje negira zaključek, zaključek pa
                          implicira ponavljanje."),
-                      actionButton("go", "Poglejmo si igro"),
+                      p("V stranskem meniju z gumboma za velikost matrike določimo dimenzije matrike,
+                        nato pa kliknemo gumb pridobi matriko. Ko imamo matriko zbrano, lahko spreminjamo
+                        v katerem koraku nas igra zanima."),
+                      p("Da si ogledamo igro v poljubnem koraku kliknemo gumb Oglejmo si igro."),
+                    p("Vsakič, ko želimo pogledati novo začetno matriko kliknemo gumb pridobi matriko, 
+                      sicer pa ta gumb ni pomemben."),
               textOutput("konec"),
               textOutput("ponovno"),
-              plotOutput("celotna_igra")),
-              #uiOutput("plots")),
-              sidebarPanel(
-                numericInput("st_korakov_igra",
-                             "Koliko korakov bo igra imela:",
-                             min = 1,
-                             max = 100,
-                             value = 10,
-                             step = 1),
-                p("Tukaj določimo število korakov"),
-                numericInput("vrstice_igre",
-                             "Koliko vrstic naj bo imela igra:",
-                             min = 1,
-                             max = 10000,
-                             value = 5,
-                             step = 1),
-                numericInput("stolpci_igre",
-                             "Koliko stolpcev naj bo imela igra:",
-                             min = 1,
-                             max = 10000,
-                             value = 5,
-                             step = 1),
-                p("S stolpci in vrsticami določimo dimenzijo igre.")))),
+              plotOutput("celotna_igra"),
+              p("Ogledamo si lahko kako izgleda igra v izbranem koraku.")))),
     #vse problemi, dogovori se s profesorjem/asistentom.
     
     #urediti moram še postavitev,
@@ -126,6 +138,10 @@ body <- dashboardBody(
     tabItem(tabName = "vrste",
             mainPanel(
             tabsetPanel(
+              tabPanel("Navodila",
+                       p("Uporaba je sledeča:"),
+                       p("Da pogledamo različne korake, bomo spreminjali število korakov,
+                         saj nam bo funckija vedno vrnila zadnji označen korak.")),
               tabPanel("Drsalec",
                        sidebarPanel(numericInput("koraki_drsi",
                                                  "Koliko korakov bo igra imela:",

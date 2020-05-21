@@ -40,18 +40,24 @@ server <- function(input, output) {
 
 
   
-  obicanja_animacija <- eventReactive(input$go2,{
+obicanja_animacija <- eventReactive(input$go2,{
   p <- animacija_obicajna(zacetno = input$zacetno2,
                           st_korakov = input$st_korakov2,
                           st_rojstvo = input$st_rojstvo2,
                           st_smrt = input$st_smrt2)
   p
   })
-output$animacija <- renderPlot(obicanja_animacija()) 
+output$animacija2 <- renderPlotly(obicanja_animacija()) 
+output$animacija <-renderUI({plotlyOutput("animacija2")})
 
-risanje_igre <- eventReactive(input$go,{
+doloci_matriko <- eventReactive(input$matrika,{
   matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
                                    stolpci = input$stolpci_igre)
+  return(matrika)
+})
+
+risanje_igre <- eventReactive(input$go,{
+  matrika <- doloci_matriko()
   for(i in 2: input$st_korakov_igra){
     p <- narisi_igro(st_korakov = i,
                      zacetna_matrika =  matrika)
@@ -60,6 +66,8 @@ risanje_igre <- eventReactive(input$go,{
   
 })
 output$celotna_igra <- renderPlot(risanje_igre())
+
+
 zakljucek <- eventReactive(input$go,{
   zacetna_matrika <- doloci_random_matriko(vrstice = input$vrstice_igre,
                                           stolpci = input$stolpci_igre)
