@@ -24,6 +24,9 @@ sidebar <- dashboardSidebar(hr(),
                             sidebarMenu(id="igra",
                                         menuItem("Igra življenja",tabName = "igre",
                                                  icon = tags$i(class="fas fa-heartbeat"))),
+                            sidebarMenu(id="celica",
+                                        menuItem("Zakaj je pomembno?",tabName = "pomen",
+                                                 icon = tags$i(class="fas fa-exclamation"))),
                             sidebarMenu(id="vrsta",
                                         menuItem("Posebni primeri",tabName = "vrste",
                                                  icon = tags$i(class="fas fa-surprise")))
@@ -34,14 +37,8 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "zacetek",
             mainPanel(
-              h1("Igra življenja"),
-              img(src = "https://raw.githubusercontent.com/mpracek/matematika-z-racunalnikom/master/slike/game_of_life.jpg"),
-              p("Igra življenja je eden izmed najbolj zanimivih matematičnih modelov.
-                Z njim lahko predstavimo kako se spreminja število živih celic v zaprtem prostoru."),
-              includeMarkdown("igra.md")
-            )
-    #tukaj moram dodati še opise za začetek, sicer smo skoraj končali
-            ),
+              includeMarkdown("igra.md"))
+        ),
     tabItem(tabName = "osnove",
             #problemi, ki jih imam tukaj so prikaz unused arguments v shiny vmesniku
             fluidRow(sidebarPanel(
@@ -75,10 +72,8 @@ body <- dashboardBody(
                             "Lognormalna" = 4)),
               p("Izberemo porazdelitev smrti."),
               actionButton("go2", "Poglejmo si prikaz")),
-            mainPanel( includeMarkdown("osnove.md"),
-            p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese.
-                         Vsak si lahko tu sam izbere, kakšen proces bo začel. 
-                         Izberi si porazdelitev smrti in porazdelitev rojstev in opazuj spremembe,
+            mainPanel(# includeMarkdown("rojstno.md"),
+            p("Da bomo razumeli delovanje igre življenja, moramo najprej razumeti rojstno smrtne procese. Vsak si lahko tu sam izbere, kakšen proces bo začel. Izberi si porazdelitev smrti in porazdelitev rojstev in opazuj spremembe,
                          ki jih graf prikaže. Vidimo, da so porazdelitve zelo pomembne, 
                          prav tako pa vpliva velikost začetne populacije."),
                        p("Ko v levem oknu izberemo vse potrebne parametre, kliknemo gumb poglejmo si prikaz.
@@ -131,12 +126,10 @@ body <- dashboardBody(
               textOutput("ponovno"),
               plotOutput("celotna_igra"),
               p("Ogledamo si lahko kako izgleda igra v izbranem koraku.")))),
-    #vse problemi, dogovori se s profesorjem/asistentom.
-    
-    #urediti moram še postavitev,
-    #Vmesnik mora vrniti ponavljanje, končnost....
-    #igra mora pokazati več oken, ne le zadnje
-    
+    tabItem(tabName = "pomen",
+            mainPanel(
+              includeMarkdown("celica.md"))
+    ),
     tabItem(tabName = "vrste",
             mainPanel(
             tabsetPanel(
