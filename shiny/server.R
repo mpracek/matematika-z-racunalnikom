@@ -56,6 +56,16 @@ doloci_matriko <- eventReactive(input$matrika,{
   return(matrika)
 })
 
+narisi_zacetno2 <- reactive({
+   p <- plot(doloci_matriko(), col = c("black","blue"),
+             main = sprintf("Začetna matrika"),
+             xlab = "", ylab ="")
+   p
+ })
+
+output$narisi_zacetno <- renderPlot(narisi_zacetno2())
+
+
 risanje_igre <- eventReactive(input$go,{
   matrika <- doloci_matriko()
   for(i in 2: input$st_korakov_igra){
@@ -104,6 +114,16 @@ output$drsi <- renderPlot(drsalo())
 output$stetje_drsi <- renderText(drsalo2())
 
 
+narisi_zacetno_drsi_2 <- reactive({
+  p <- plot(drsalec, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_drsi <- renderPlot(narisi_zacetno_drsi_2())
+
+
 # tabPanel("Gosper"),
 gos <- reactive({
   rezultat <- narisi_igro(input$koraki_gosi,gosper1)
@@ -120,6 +140,15 @@ gos3 <- reactive({
 output$ponovno_gosi <- renderText(gos3())
 output$stetje_gosi <- renderText(gos2())
 output$gosi <- renderPlot(gos())
+
+narisi_zacetno_gos_2 <- reactive({
+  p <- plot(gosper1, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_gos <- renderPlot(narisi_zacetno_gos_2())
 
 
 # tabPanel("Krastača"),
@@ -141,6 +170,15 @@ toad3 <- reactive({
 })
 output$ponovno_toad <- renderText(toad3())
 
+narisi_zacetno_toad_2 <- reactive({
+  p <- plot(krastaca, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_toad <- renderPlot(narisi_zacetno_toad_2())
+
 
 # tabPanel("Ladja"),
 ladjon <- reactive({
@@ -160,6 +198,14 @@ ladjon3 <- reactive({
 })
 output$ponovno_ladjon <- renderText(ladjon3())
 
+narisi_zacetno_ladja_2 <- reactive({
+  p <- plot(ladja, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_ladja <- renderPlot(narisi_zacetno_ladja_2())
 
 # tabPanel("Neomejeno"),
 rast <- reactive({
@@ -179,6 +225,15 @@ rast3 <- reactive({
   return(rezultat)
 })
 output$ponovno_rast <- renderText(rast3())
+
+narisi_zacetno_rast_2 <- reactive({
+  p <- plot(neomejeno, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_rast <- renderPlot(narisi_zacetno_rast_2())
 
 
 #tabPanel("Motor"),
@@ -201,6 +256,15 @@ brum3 <- reactive({
 })
 output$ponovno_brum <- renderText(brum3())
 
+narisi_zacetno_brum_2 <- reactive({
+  p <- plot(motor, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_brum <- renderPlot(narisi_zacetno_brum_2())
+
 
 # tabPanel("Pištola"),
 bum <- reactive({
@@ -221,6 +285,16 @@ bum3 <- reactive({
 })
 output$ponovno_bum <- renderText(bum3())
 
+narisi_zacetno_bum_2 <- reactive({
+  p <- plot(pistola, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_bum <- renderPlot(narisi_zacetno_bum_2())
+
+
 # tabPanel("Pentomino"),
 pet <- reactive({
   rezultat <- narisi_igro(input$koraki_pet,pent)
@@ -240,6 +314,16 @@ pet3 <- reactive({
 })
 output$ponovno_pet <- renderText(pet3())
 
+narisi_zacetno_pet_2 <- reactive({
+  p <- plot(pent, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_pet <- renderPlot(narisi_zacetno_pet_2())
+
+
 # tabPanel("Pulsar"),
 pulz <- reactive({
   rezultat <- narisi_igro(input$koraki_pulz,pulzor)
@@ -258,6 +342,16 @@ pulz3 <- reactive({
   return(rezultat)
 })
 output$ponovno_pulz <- renderText(pulz3())
+
+narisi_zacetno_pulz_2 <- reactive({
+  p <- plot(pulzor, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_pulz <- renderPlot(narisi_zacetno_pulz_2())
+
 
 # tabPanel("Statično"),
 statika1 <- reactive({
@@ -320,6 +414,33 @@ statika3b <- reactive({
 })
 output$ponovno_statika3 <- renderText(statika3b())
 
+
+narisi_zacetno_staticno_1 <- reactive({
+  p <- plot(staticno1a, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_1 <- renderPlot(narisi_zacetno_staticno_1())
+
+narisi_zacetno_staticno_2 <- reactive({
+  p <- plot(staticno2a, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_2 <- renderPlot(narisi_zacetno_staticno_2())
+
+narisi_zacetno_staticno_3 <- reactive({
+  p <- plot(staticno1a, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_3 <- renderPlot(narisi_zacetno_staticno_3())
 # tabPanel("Svetilnik"),
 luc <- reactive({
   rezultat <- narisi_igro(input$koraki_luc,svetilka)
@@ -338,6 +459,16 @@ luc3 <- reactive({
   return(rezultat)
 })
 output$ponovno_luc <- renderText(luc3())
+
+narisi_zacetno_luc_2 <- reactive({
+  p <- plot(svetilka, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_luc <- renderPlot(narisi_zacetno_luc_2())
+
 
 # tabPanel("Umri pokončno"),
 DH <- reactive({
@@ -358,6 +489,16 @@ DH3 <- reactive({
 })
 output$ponovno_DH <- renderText(DH3())
 
+narisi_zacetno_DH_2 <- reactive({
+  p <- plot(bruce_willis, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_DH <- renderPlot(narisi_zacetno_DH_2())
+
+
 # tabPanel("Utripajoča lučka"),
 blipblip <- reactive({
   rezultat <- narisi_igro(input$koraki_blip,rotacija)
@@ -376,6 +517,16 @@ blip3 <- reactive({
   return(rezultat)
 })
 output$ponovno_blip <- renderText(blip3())
+
+narisi_zacetno_blip_2 <- reactive({
+  p <- plot(rotacija, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_blip <- renderPlot(narisi_zacetno_blip_2())
+
 
 # tabPanel("Vesoljska ladja"),
 vroom <- reactive({
@@ -396,6 +547,16 @@ vroom3 <- reactive({
 })
 output$ponovno_vroom <- renderText(vroom3())
 
+narisi_zacetno_vroom_2 <- reactive({
+  p <- plot(vesolje, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_vroom <- renderPlot(narisi_zacetno_vroom_2())
+
+
 # tabPanel("Želod")
 hrast <- reactive({
   rezultat <- narisi_igro(input$koraki_hrast,zelod)
@@ -415,6 +576,14 @@ hrast3 <- reactive({
 })
 output$ponovno_hrast <- renderText(hrast3())
 
+narisi_zacetno_hrast_2 <- reactive({
+  p <- plot(zelod, col = c("black","blue"),
+            main = sprintf("Začetna matrika"),
+            xlab = "", ylab ="")
+  p
+})
+
+output$narisi_zacetno_hrast <- renderPlot(narisi_zacetno_hrast_2())
 
 
 

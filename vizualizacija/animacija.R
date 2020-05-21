@@ -47,7 +47,7 @@ narisi_igro <- function(st_korakov, zacetna_matrika){
   #modri kvadratki so žive celice
   rezultat <- celotna_igra(st_korakov, zacetna_matrika)
   for(i in 1:length(rezultat)){
-    p <- plot(rezultat[[i]], col = c("blue","black"),
+    p <- plot(rezultat[[i]], col = c("black","blue"),
          main = sprintf("Igra v %d koraku",i),
          xlab = "", ylab ="")
     p
