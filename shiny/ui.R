@@ -103,8 +103,8 @@ body <- dashboardBody(
                            value = 10,
                            step = 1),
               p("S stolpci in vrsticami določimo dimenzijo igre."),
-              actionButton("matrika", "Pridobi matriko"),
-              actionButton("go", "Poglejmo si igro")
+              actionButton("matrika", "Pridobi matriko")#,
+              #actionButton("go", "Poglejmo si igro")
             ),
             mainPanel(p("Ideja Johna Conwaya je bila prikazati, kako v zaprtem prostoru deluje 
                         delitev celic. Navadno nas zanima kako se igra ponavlja oziroma kako se konča.
@@ -119,7 +119,7 @@ body <- dashboardBody(
                       p("V stranskem meniju z gumboma za velikost matrike določimo dimenzije matrike,
                         nato pa kliknemo gumb pridobi matriko. Ko imamo matriko zbrano, lahko spreminjamo
                         v katerem koraku nas igra zanima."),
-                      p("Da si ogledamo igro v poljubnem koraku kliknemo gumb Oglejmo si igro."),
+                      #p("Da si ogledamo igro v poljubnem koraku kliknemo gumb Oglejmo si igro."),
                       p("Vsakič, ko želimo pogledati novo začetno matriko kliknemo gumb pridobi matriko, 
                       sicer pa ta gumb ni pomemben."),
                       textOutput("konec"),

@@ -30,7 +30,7 @@ animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
   fig <- ggplot(podatki, aes(x = koraki,
                              y = rezultat)) +
     ggtitle("Potek rojstno smrtnega procesa") +
-    xlab("Korak") + ylab("Število osebkov") +
+    xlab("Korak") + ylab("Osebkov v trenutku") +
     #Dodaj še poimenovanje osi!!
     geom_point(aes(frame=koraki))
   fig <- ggplotly(fig)
@@ -41,16 +41,13 @@ animacija_obicajna <- function(zacetno,st_korakov,st_rojstvo,st_smrt){
 
 
 #igra življenja
-#risanje igre
 narisi_igro <- function(st_korakov, zacetna_matrika){
   #črni kvadratki so mrtve celice
   #modri kvadratki so žive celice
   rezultat <- celotna_igra(st_korakov, zacetna_matrika)
-  for(i in 1:length(rezultat)){
-    p <- plot(rezultat[[i]], col = c("black","blue"),
-         main = sprintf("Igra v %d koraku",i),
-         xlab = "", ylab ="")
-    p
-  }
+  p <- plot(rezultat[[st_korakov]], col = c("black","blue"),
+       main = sprintf("Igra v %d koraku",st_korakov),
+       xlab = "", ylab ="")
+  p
 }
 

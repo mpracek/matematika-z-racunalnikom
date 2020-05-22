@@ -40,14 +40,11 @@ narisi_zacetno2 <- reactive({
 output$narisi_zacetno <- renderPlot(narisi_zacetno2())
 
 
-risanje_igre <- eventReactive(input$go,{
+risanje_igre <- reactive({#input$go,{
   matrika <- doloci_matriko()
-  for(i in 2: input$st_korakov_igra){
-    p <- narisi_igro(st_korakov = i,
+  p <- narisi_igro(st_korakov = input$st_korakov_igra,
                      zacetna_matrika =  matrika)
-    p
-  }
-  
+  p
 })
 output$celotna_igra <- renderPlot(risanje_igre())
 
